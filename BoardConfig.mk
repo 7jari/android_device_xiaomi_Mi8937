@@ -125,9 +125,7 @@ $(foreach p, $(call to-upper, $(TREBLE_PARTITIONS)), \
 
 ifneq ($(TARGET_IS_AUTOMOTIVE),true)
 ifneq ($(TARGET_IS_TV),true)
-ifneq ($(WITH_GMS),true)
 BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 838860800 # 800 MB
-endif
 endif
 endif
 
