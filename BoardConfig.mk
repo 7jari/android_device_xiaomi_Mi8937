@@ -5,7 +5,7 @@
 #
 
 # Kernel
-TARGET_USES_MITHORIUM_KERNEL := true
+TARGET_USES_MITHORIUM_KERNEL := false
 TARGET_USES_PREBUILT_KERNEL := true
 
 # Partitions
