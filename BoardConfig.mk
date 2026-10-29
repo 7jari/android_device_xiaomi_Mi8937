@@ -6,6 +6,7 @@
 
 # Kernel
 TARGET_USES_MITHORIUM_KERNEL := true
+TARGET_USES_PREBUILT_KERNEL := true
 
 # Partitions
 SSI_PARTITIONS := product system system_ext
@@ -73,6 +74,7 @@ ifeq ($(MI8937_CAM_USE_LATEST_CAMERA_STACK),true)
 TARGET_KERNEL_CONFIG += vendor/xiaomi/msm8937/optional/latest-camera-stack.config
 endif
 
+ifneq ($(TARGET_USES_PREBUILT_KERNEL),true)
 ifeq ($(TARGET_KERNEL_VERSION),4.19)
 TARGET_KERNEL_RECOVERY_CONFIG += \
     vendor/msm8937-legacy.config
@@ -80,6 +82,7 @@ endif
 TARGET_KERNEL_RECOVERY_CONFIG += \
     vendor/xiaomi/msm8937/common.config \
     vendor/xiaomi/msm8937/mi8937.config
+endif
 
 # Kernel - Prebuilt
 ifeq ($(TARGET_KERNEL_VERSION),4.19)
@@ -89,7 +92,6 @@ else
 TARGET_PREBUILT_KERNEL := device/xiaomi/kernel-mithorium/Mi8937/Image.gz-dtb
 BOARD_VENDOR_KERNEL_MODULES += $(wildcard device/xiaomi/kernel-mithorium/Mi8937/*.ko)
 endif
-TARGET_PREBUILT_RECOVERY_KERNEL := $(TARGET_PREBUILT_KERNEL)
 
 ifneq ($(filter true,$(TARGET_IS_AUTOMOTIVE) $(TARGET_IS_TV)),)
 $(call soong_config_set,MITHORIUM_KERNEL,DEVICE,Mi8937_4_19)
