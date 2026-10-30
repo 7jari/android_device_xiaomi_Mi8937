@@ -83,13 +83,10 @@ TARGET_KERNEL_RECOVERY_CONFIG += \
 
 # Kernel - Prebuilt
 ifeq ($(TARGET_KERNEL_VERSION),4.19)
-TARGET_PREBUILT_KERNEL := device/xiaomi/kernel-mithorium/Mi8937_4_19/Image.gz-dtb
 BOARD_VENDOR_KERNEL_MODULES += $(wildcard device/xiaomi/kernel-mithorium/Mi8937_4_19/*.ko)
 else
-TARGET_PREBUILT_KERNEL := device/xiaomi/kernel-mithorium/Mi8937/Image.gz-dtb
 BOARD_VENDOR_KERNEL_MODULES += $(wildcard device/xiaomi/kernel-mithorium/Mi8937/*.ko)
 endif
-TARGET_PREBUILT_RECOVERY_KERNEL := $(TARGET_PREBUILT_KERNEL)
 
 ifneq ($(filter true,$(TARGET_IS_AUTOMOTIVE) $(TARGET_IS_TV)),)
 $(call soong_config_set,MITHORIUM_KERNEL,DEVICE,Mi8937_4_19)
