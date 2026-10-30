@@ -81,15 +81,10 @@ TARGET_KERNEL_RECOVERY_CONFIG += \
     vendor/xiaomi/msm8937/common.config \
     vendor/xiaomi/msm8937/mi8937.config
 
-# Kernel - Prebuilt
 ifeq ($(TARGET_KERNEL_VERSION),4.19)
-BOARD_VENDOR_KERNEL_MODULES += $(wildcard device/xiaomi/kernel-mithorium/Mi8937_4_19/*.ko)
-else
-BOARD_VENDOR_KERNEL_MODULES += $(wildcard device/xiaomi/kernel-mithorium/Mi8937/*.ko)
-endif
-
 ifneq ($(filter true,$(TARGET_IS_AUTOMOTIVE) $(TARGET_IS_TV)),)
 $(call soong_config_set,MITHORIUM_KERNEL,DEVICE,Mi8937_4_19)
+endif
 endif
 
 # Partitions
